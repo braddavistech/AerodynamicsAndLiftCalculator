@@ -3,7 +3,7 @@ var density
 var velocity
 var wingArea
 var lift
-var differentPlanes
+var differentPlanes = new Array ();
 var counter = 1;
 var arrayCounter = 0;
 var nextPlane 
