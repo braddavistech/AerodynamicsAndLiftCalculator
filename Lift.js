@@ -33,7 +33,7 @@ while (nextPlane == 'YES') {
         lift
       }
 
-    differentPlanes.push[plane];
+    differentPlanes[arrayCounter] = [cLift, density, velocity, wingArea];
     print(plane);
     nextPlane = prompt('Would you like to enter another equation? (Enter Yes or No)');
     nextPlane = nextPlane.toUpperCase();
