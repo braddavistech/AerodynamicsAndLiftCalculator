@@ -54,8 +54,9 @@ while (nextPlane == 'YES') {
           lift
       }
 
-    differentPlanes.push(plane[arrayCounter]);
-    print(plane);
-    nextPlane = prompt('Would you like to enter another equation? (Enter Yes or No)');
-    nextPlane = nextPlane.toUpperCase();
+      print(plane);
+      differentPlanes.push(plane);
+    
+      nextPlane = prompt('Would you like to enter another equation? (Enter Yes or No)');
+      nextPlane = nextPlane.toUpperCase();
 }
