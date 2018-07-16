@@ -3,8 +3,7 @@ var density
 var velocity
 var wingArea
 var lift
-var nextPlane 
-var differentPlanes
+var nextPlane
 var counter = 1;
 var arrayCounter = 0;
 
@@ -31,8 +30,9 @@ function print (listObject){
         wingArea,
         lift
     }
-    
+
     print(plane);
+    var differentPlanes = new Array ();
     differentPlanes = [plane];
 
     nextPlane = prompt('Would you like to enter another equation? (Enter Yes or No)');
@@ -57,9 +57,9 @@ while (nextPlane == 'YES') {
 
       nextPlane = prompt('Would you like to enter another equation? (Enter Yes or No)');
       nextPlane = nextPlane.toUpperCase();
-    
+
       print(plane);
       differentPlanes.push(plane);
-    
-     
+
+
 }
