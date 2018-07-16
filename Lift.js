@@ -37,5 +37,7 @@ while (nextPlane == 'YES') {
     print(plane);
     nextPlane = prompt('Would you like to enter another equation? (Enter Yes or No)');
     nextPlane = nextPlane.toUpperCase();
+    differentPlanes.push(plane);
+    print(plane);
     arrayCounter += 1;
 }
