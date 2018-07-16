@@ -39,6 +39,7 @@ function print (listObject){
 
 while (nextPlane == 'YES') {
       counter += 1;
+      arrayCounter += 1;
       cLift = parseFloat(prompt('What is the coefficient of lift for aircraft ' + counter + ' ?'));
       density = parseFloat(prompt('What is the air density for aircraft ' + counter + ' in kilograms per cubic meter?'));
       velocity = parseFloat(prompt('What is the velocity for aircraft ' + counter + ' in meters per second'));
@@ -53,9 +54,8 @@ while (nextPlane == 'YES') {
           lift
       }
 
-    differentPlanes.push(plane);
+    differentPlanes.push(plane[arrayCounter]);
     print(plane);
     nextPlane = prompt('Would you like to enter another equation? (Enter Yes or No)');
     nextPlane = nextPlane.toUpperCase();
-    arrayCounter += 1;
 }
