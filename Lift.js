@@ -4,8 +4,9 @@ var velocity
 var wingArea
 var lift
 var differentPlanes
-var counter = 1;
+var counter = 0;
 var arrayCounter = 0;
+var nextPlane = "YES";
 
 function print (listObject){
   document.write('The coefficient of lift for Aircraft # ' + counter + ' is ' + cLift + '.<br>');
@@ -16,30 +17,8 @@ function print (listObject){
   document.write('This is in differentPlanes[' + arrayCounter + ']. <br><br>');
 }
 
-cLift = parseFloat(prompt('What is the coefficient of lift for aircraft 1?'));
-density = parseFloat(prompt('What is the air density for aircraft 1 in kilograms per cubic meter?'));
-velocity = parseFloat(prompt('What is the velocity for aircraft 1 in meters per second'));
-wingArea = parseFloat(prompt('What is the wing area for aircraft 1 in square meters?'));
-lift = .5 * cLift * density * velocity * velocity * wingArea;
-
-var plane = {
-  cLift,
-  density,
-  velocity,
-  wingArea,
-  lift
-}
-
-differentPlanes = [plane];
-
-print(plane);
-
-var nextPlane = prompt('Would you like to enter another equation? (Enter Yes or No)');
-nextPlane = nextPlane.toUpperCase();
-
-while (nextPlane != 'NO') {
+while (nextPlane == 'YES') {
     counter += 1;
-    arrayCounter += 1;
     cLift = parseFloat(prompt('What is the coefficient of lift for aircraft ' + counter + ' ?'));
     density = parseFloat(prompt('What is the air density for aircraft ' + counter + ' in kilograms per cubic meter?'));
     velocity = parseFloat(prompt('What is the velocity for aircraft ' + counter + ' in meters per second'));
@@ -58,4 +37,5 @@ while (nextPlane != 'NO') {
     print(plane);
     nextPlane = prompt('Would you like to enter another equation? (Enter Yes or No)');
     nextPlane = nextPlane.toUpperCase();
+    arrayCounter += 1;
 }
