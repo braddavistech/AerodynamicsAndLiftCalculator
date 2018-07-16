@@ -31,11 +31,11 @@ function print (listObject){
         lift
     }
     
-      differentPlanes.push(plane);
-      print(plane);
+    differentPlanes = plane;
+    print(plane);
 
-      nextPlane = prompt('Would you like to enter another equation? (Enter Yes or No)');
-      nextPlane = nextPlane.toUpperCase();
+    nextPlane = prompt('Would you like to enter another equation? (Enter Yes or No)');
+    nextPlane = nextPlane.toUpperCase();
 
 while (nextPlane == 'YES') {
       counter += 1;
