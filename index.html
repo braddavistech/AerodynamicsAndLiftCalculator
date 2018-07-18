@@ -1,16 +1,55 @@
+<!doctype html>
 <html>
-  <title>Aerospace Calculator</title>
-
+  	<title>Aerospace Calculator</title>
+	<meta name="author" description="Brad Davis">
+	<meta name="description" description="This application will be able to take input from users and make complex calculations and return the answer.">
 <head>
 <style>
-  body{
-    font-size: 3vw;
-    font-weight: bold;
-  }
+    input{
+      position:absolute;
+      color:black;
+      padding: 0vw;
+      margin:0vw;
+      width:30vw;
+      left: 25vw;
+      font-size:3vw;
+      font-weight: bold;
+    }
+
+    #titles{
+      font-weight:bolder;
+      font-size: 3vw;
+    }
+
+    button{
+      position:absolute;
+      width:50vw;
+      left:25vw;
+      padding:0vw;
+      background-color: grey;
+      font-size:4vw;
+      font-weight: bolder; 
+    }
+  	
 </style>
 </head>
 <body>
-  <h1 style="text-align:center; width:100vw;">AEROSPACE CALCULATOR</h1>
-  <script src="Lift.js"></script>
+
+  	  <h1 style="text-align:center; width:100vw;">AEROSPACE CALCULATOR</h1>
+  	
+		  <P id="titles">Coefficient of Lift<input type="number" step=".001" id="cOfLift"></p>
+      <p id="titles">Density<input type="number" step=".001" id="density"></p>
+  	  <p id="titles">Velocity<input type="number" step=".001" id="velocity"></p>
+      <p id="titles">Wing Area<input type="number" step=".001" id="wingArea"><br></p>
+
+		  <button id="calculateButton">Calculate</button>
+		  <p id="liftAnswer"></p>
+
+		  <script src="testInput.js"></script>
+	
+
+
+
+
 </body>
 </html>
