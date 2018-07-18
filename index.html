@@ -5,50 +5,78 @@
 	<meta name="description" description="This application will be able to take input from users and make complex calculations and return the answer.">
 <head>
 <style>
-    input{
-      position:absolute;
-      color:black;
-      padding: 0vw;
-      margin:0vw;
-      width:30vw;
-      left: 25vw;
-      font-size:3vw;
-      font-weight: bold;
-    }
+    	input{
+      		position:absolute;
+      		color:black;
+      		padding: 0vw;
+      		margin:0vw;
+		width:30vw;
+      		left: 25vw;
+      		font-size:3vw;
+      		font-weight: bold;
+    	}
 
-    #titles{
-      font-weight:bolder;
-      font-size: 3vw;
-    }
+    	#titles{
+		color:white;
+		font-weight:bolder;
+		font-size: 2.1vw;
+		padding:.75vw;
+		padding-bottom:8.5vw;
+		background:black;
+		top:31vw;
+		width:50vw;
+		margin-left:5vw;
+	}
 
-    button{
-      position:absolute;
-      width:50vw;
-      left:25vw;
-      padding:0vw;
-      background-color: grey;
-      font-size:4vw;
-      font-weight: bolder; 
-    }
+    	button{
+      		position:absolute;
+      		width:30.55vw;
+      		left:25vw;
+      		padding:0vw;
+      		background-color: grey;
+      		font-size:4vw;
+      		font-weight: bolder; 
+    	}
   	
+    	body{
+		background-image:url("https://cdn.rawgit.com/braddavistech/AerodynamicsAndLiftCalculator/65ba72c7/Images/WingSweep.jpg");
+      		no-repeat;
+      		background-size: cover;
+	}
+
 </style>
 </head>
 <body>
-
-  	  <h1 style="text-align:center; width:100vw;">AEROSPACE CALCULATOR</h1>
-  	
-		  <P id="titles">Coefficient of Lift<input type="number" step=".001" id="cOfLift"></p>
-      <p id="titles">Density<input type="number" step=".001" id="density"></p>
-  	  <p id="titles">Velocity<input type="number" step=".001" id="velocity"></p>
-      <p id="titles">Wing Area<input type="number" step=".001" id="wingArea"><br></p>
-
-		  <button id="calculateButton">Calculate</button>
-		 
-		  <script src="lift.js"></script>
+	<h1 style="text-align:center; width:100vw;">AEROSPACE CALCULATOR</h1>
+  		<div id="titles">
+		<p>Coefficient of Lift<input type="number" step=".001" id="cOfLift"></p>
+		<p>Density<input type="number" step=".001" id="density"></p>
+  		<p>Velocity<input type="number" step=".001" id="velocity"></p>
+		<p>Wing Area<input type="number" step=".001" id="wingArea"><br></p>
+		<button id="calculateButton">Calculate</button>
+		<p></p>
+		</div>
 	
+	<script>
+		let cLift,density,velocity,area
 
-
-
+		calculateButton.addEventListener('click', ()=>{
+			cLift = document.getElementById('cOfLift').value;
+			density = document.getElementById('density').value;
+			velocity = document.getElementById('velocity').value;
+			area = document.getElementById('wingArea').value;
+			const calculateButton = document.getElementById('calculateButton');
+			lift = .5*cLift*density*velocity*velocity*area;
+			document.write('The coefficient of lift is ' + cLift + '.<br>');
+    			document.write('The density is ' + density + ' kilograms per cubic meter.<br>');
+    			document.write('The velocity is ' + velocity + ' meters per second.<br>');
+    			document.write('The wing area is ' + area + ' square meters.<br>');
+			document.write('The lift of the aircraft in these conditions is ' + lift + ' Newtons.<br>');
+		});
+	</script>			
+	
+	
 
 </body>
 </html>
+
