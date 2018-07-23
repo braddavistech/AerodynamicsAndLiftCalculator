@@ -47,83 +47,161 @@
 	<style name="AppTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.StatusBar.Title">
     		<item name="android:textColor">#000000</item>
 	</style>
-<style>
-    	*{
-		maring:0vw;
-		padding:0vw;
-	}
-	input{
-      		position:absolute;
-      		color:black;
-      		padding: 0vw;
-      		margin:0vw;
-		width:30vw;
-      		left: 25vw;
-      		font-size:3vw;
-      		font-weight: bold;
-    	}
+  <style>
+      *{
+        margin:0px;
+        padding:0px;
+      }
+      html{
+        background-image: url("Sky.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      #myVideo{
+        position:fixed;
+        width:40.5vw;
+        top:10vw;
+        margin-left:58vw;
+        z-index: 1;
 
-    	#titles{
-		color:white;
-		font-weight:bolder;
-		font-size: 2.1vw;
-		padding:.75vw;
-		padding-bottom:8.5vw;
-		background:black;
-		top:31vw;
-		width:50vw;
-		margin-left:5vw;
-	}
-
-    	button{
-      		position:absolute;
-      		width:30.55vw;
-      		left:25vw;
-      		padding:0vw;
-      		background-color: grey;
-      		font-size:4vw;
-      		font-weight: bolder; 
-    	}
-  	
-    	body{
-		background-image:url("https://cdn.rawgit.com/braddavistech/AerodynamicsAndLiftCalculator/65ba72c7/Images/WingSweep.jpg");
-      		no-repeat;
-		background-size: cover;
-	}
-
-</style>
+      }
+      #title{
+        font-family: arial;
+        position:fixed;
+        z-index: 2;
+        text-align:center;
+        font-size: 7vw;
+        width:100vw;
+        color:black;
+        font-weight: bold;
+      }
+      .mainBox{
+        font-family: arial;
+        position:fixed;
+        z-index: 2;
+        top:10vw;
+        width: 55vw;
+        font-size: 5vw;
+  	    background: #ebebe0;
+        margin-left: 1.5vw;
+        margin-right:1.5vw;
+        position: relative;
+  	    overflow: hidden;
+        border-style:solid;
+        border-width:.25vw;
+        border-color:black;
+      }
+      #namesInput{
+        margin-left: 1vw;
+        margin-top:.5vw;
+        margin-bottom:.5vw;
+        font-size: 1.5vw;
+        font-weight: bolder;
+        line-height: 1;
+      }
+      .inputBox{
+        width:10vw;
+        margin-left:1vw;
+        padding-top:.5vw;
+        padding-bottom:.25vw;
+      }
+      input::placeholder{
+        color:red;
+        font-size: 1.25vw;
+        padding-left:1vw;
+      }
+      #submitAnswer{
+        position:relative;
+        color: black;
+        background-color: red;
+        font-weight: bold;
+        text-align:center;
+  	    font-size: 1.5vw;
+        width:6vw;
+  	    margin-left: 22vw;
+        padding-top: .25vw;
+        padding-bottom: .25vw;
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+        border-radius: 1vw;
+  	    line-height: 1;
+      }
+      #printOut{
+        margin-left: 1vw;
+        margin-top:1vw;
+        margin-bottom:1vw;
+        font-size: 1.4vw;
+        font-weight: bolder;
+        line-height: 1;
+      }
+  </style>
 </head>
-<body>
-	<p style="text-align:center; margin-top:1vw; margin-bottom:1vw; font-size:5vw; font-weight:bold; width:98vw;">AEROSPACE CALCULATOR</h1>
-  		<div id="titles">
-		<p>Coefficient of Lift<input type="number" step=".001" id="cOfLift"></p>
-		<p>Density<input type="number" step=".001" id="density"></p>
-  		<p>Velocity<input type="number" step=".001" id="velocity"></p>
-		<p>Wing Area<input type="number" step=".001" id="wingArea"><br></p>
-		<button id="calculateButton">Calculate</button>
-		<p></p>
-		</div>
-	
-	<script>
-		let cLift,density,velocity,area
 
-		calculateButton.addEventListener('click', ()=>{
-			cLift = document.getElementById('cOfLift').value;
-			density = document.getElementById('density').value;
-			velocity = document.getElementById('velocity').value;
-			area = document.getElementById('wingArea').value;
-			const calculateButton = document.getElementById('calculateButton');
-			lift = .5*cLift*density*velocity*velocity*area;
-			document.write('The coefficient of lift is ' + cLift + '.<br>');
-    			document.write('The density is ' + density + ' kilograms per cubic meter.<br>');
-    			document.write('The velocity is ' + velocity + ' meters per second.<br>');
-    			document.write('The wing area is ' + area + ' square meters.<br>');
-			document.write('The lift of the aircraft in these conditions is ' + lift + ' Newtons.<br>');
-		});
-	</script>			
-	
-	
+<body>
+  <h1 id="title">LIFT CALCULATOR<br></h1>
+
+  <video autoplay muted loop id="myVideo">
+    <source src="WrightBrothers.mp4" type="video/mp4">
+  </video>
+
+  <div class = "mainBox">
+      <p id="namesInput">COEFFICIENT OF LIFT </p>
+        <input class="inputBox" id="cOfLift" type="number" step=".001" placeholder="Enter C of Lift">
+      <p id="namesInput">DENSITY </p>
+        <input class="inputBox" id="density" type="number" step=".001" placeholder="Enter Density">
+      <p id="namesInput">VELOCITY<br>
+        <input class="inputBox" style="margin-left: 0vw; margin-top:.5vw; margin-bottom:.3vw;" id="velocityInput" type="number" step=".001" placeholder="Enter Velocity">
+          <input id="selectButtons" type="radio" name="velocity" value="feet"/><label style="font-size:1vw;">FEET</label>
+          <input id="selectButtons" type="radio" name="velocity" value="meters"/><label style="font-size:1vw;">METERS</label>
+          <input id="selectButtons" type="radio" name="velocity" value="miles"/><label style="font-size:1vw;">MILES</label>
+          <input id="selectButtons" type="radio" name="velocityTime" value="seconds"/><label style="font-size:1vw;">SECONDS</label>
+          <input id="selectButtons" type="radio" name="velocityTime" value="hours"/><label style="font-size:1vw;">HOURS</label></p>
+      <p id="namesInput">WING AREA</p>
+          <input class="inputBox" id="wingArea" type="number" step=".001" placeholder="Enter Wing Area"></p>
+      <button id="submitAnswer">Submit</button>
+
+      <script>
+      var cOfLift, density, area, lift, velocityInput, velocityCorrected, velocitySentence, finalVelocity
+      const lengthButton=document.getElementsByName('velocity');
+      const timeButton=document.getElementsByName('velocityTime');
+
+      submitAnswer.addEventListener('click', ()=> {
+          density = document.getElementById('density').value;
+          cOfLift = document.getElementById('cOfLift').value;
+          area = document.getElementById('wingArea').value;
+          if ((lengthButton[0].checked || lengthButton[1].checked || lengthButton[2].checked) &&(timeButton[0].checked || timeButton[1].checked)){
+              velocityInput=document.getElementById('velocityInput').value;
+              if (lengthButton[0].checked){
+                velocityCorrected = velocityInput*.3048;}
+              else if (lengthButton[1].checked){
+                velocityCorrected = velocityInput*1.000;}
+              else {velocityCorrected = velocityInput*1609.344;}
+              if (timeButton[0].checked){
+                velocityCorrected = velocityCorrected;}
+              else {
+                velocityCorrected = velocityCorrected/3600;}
+              lift = .5*cOfLift*density*velocityCorrected*velocityCorrected*area;
+
+              document.getElementById("cOfLiftSentence").innerHTML = "The coefficient of lift for the aircraft is " + cOfLift + ".";
+              document.getElementById("densitySentence").innerHTML = "The density for the air around the aircraft is " + density + " kilograms per cubic meters.";
+              document.getElementById("velocitySentence").innerHTML = "The velocity for the aircraft is " + velocityCorrected.toFixed(2) + " meters per second.";
+              document.getElementById("areaSentence").innerHTML = "The planform area for the aircraft is " + area + " square meters.";
+              document.getElementById("liftSentence").innerHTML = "The lift for the aircraft is " + lift.toFixed(2) + " Newtons.";
+          } else {document.getElementById("velocitySentence").innerHTML = "You must select both a length and time unit for the velocity.";}
+
+
+
+        });
+
+        </script>
+      <div id="printOut">
+        <p id="cOfLiftSentence"></p>
+        <p id="densitySentence"></p>
+        <p id="velocitySentence"></p>
+        <p id="areaSentence"></p>
+        <p id="liftSentence"></p>
+      </div>
+  </div>
 
 </body>
 </html>
-
