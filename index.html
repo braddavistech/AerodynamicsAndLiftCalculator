@@ -83,6 +83,7 @@
         font-family: arial;
         position:fixed;
         z-index: 2;
+        top:.5vw;
         text-align:center;
         font-size: 7vw;
         width:100vw;
@@ -95,29 +96,28 @@
         z-index: 2;
         top:8vw;
         width: 55vw;
-        font-size: 5vw;
-  	    background: #ebebe0;
-        margin-left: 1.5vw;
-        margin-right:1.5vw;
-        position: relative;
+        background: #ebebe0;
+        margin-left: 22.25vw;
+        position: fixed;
   	    overflow: hidden;
         border-style:solid;
         border-width:.25vw;
         border-color:black;
       }
       #namesInput{
-        margin-left: 1vw;
-        margin-top:0vw;
-        margin-bottom:0vw;
+        position:relative;
+        margin-left: 2vw;
+        margin-top:1vw;
+        margin-bottom:1vw;
         font-size: 1.5vw;
         font-weight: bolder;
         line-height: 1;
       }
       .inputBox{
-        width:10vw;
+        width:15vw;
         margin-left:1vw;
-        padding-top:0vw;
-        padding-bottom:0vw;
+        padding-top:.25vw;
+        padding-bottom:.25vw;
       }
       input::placeholder{
         color:red;
@@ -132,11 +132,11 @@
         text-align:center;
   	    font-size: 1.5vw;
         width:6vw;
-  	    margin-left: 22vw;
+  	    margin-left: 24.5vw;
         padding-top: .25vw;
         padding-bottom: .25vw;
-        margin-top: 1vw;
-        margin-bottom: 1vw;
+        margin-top: 0vw;
+        margin-bottom: 0vw;
         border-radius: 1vw;
   	    line-height: 1;
       }
@@ -150,16 +150,14 @@
       }
   </style>
 </head>
-
 <body>
   <h1 id="title">LIFT CALCULATOR<br></h1>
-
 <div class = "mainBox">
       <p id="namesInput">COEFFICIENT OF LIFT </p>
         <input class="inputBox" id="cOfLift" type="number" step=".001" placeholder="Enter C of Lift">
       <p id="namesInput">DENSITY </p>
         <input class="inputBox" id="density" type="number" step=".001" placeholder="Enter Density">
-      <p id="namesInput">VELOCITY<br>
+      <p id="namesInput">VELOCITY</p>
         <input class="inputBox" id="velocityInput" type="number" step=".001" placeholder="Enter Velocity">
           <input id="selectButtons" type="radio" name="velocity" value="feet"/><label style="font-size:1vw;">FEET</label>
           <input id="selectButtons" type="radio" name="velocity" value="meters"/><label style="font-size:1vw;">METERS</label>
@@ -169,16 +167,19 @@
       <p id="namesInput">WING AREA</p>
           <input class="inputBox" id="wingArea" type="number" step=".001" placeholder="Enter Wing Area"></p>
       <button id="submitAnswer">Submit</button>
-
       <script>
       var cOfLift, density, area, lift, velocityInput, velocityCorrected, velocitySentence, finalVelocity
       const lengthButton=document.getElementsByName('velocity');
       const timeButton=document.getElementsByName('velocityTime');
-
       submitAnswer.addEventListener('click', ()=> {
           density = document.getElementById('density').value;
+          density = density*1.00;
           cOfLift = document.getElementById('cOfLift').value;
+          cOfLift=cOfLift*1.00;
+          cOfLift = cOfLift.toFixed(3);
           area = document.getElementById('wingArea').value;
+          area = area*1.00;
+          area = area.toFixed(3);
           if ((lengthButton[0].checked || lengthButton[1].checked || lengthButton[2].checked) &&(timeButton[0].checked || timeButton[1].checked)){
               velocityInput=document.getElementById('velocityInput').value;
               if (lengthButton[0].checked){
@@ -191,18 +192,13 @@
               else {
                 velocityCorrected = velocityCorrected/3600;}
               lift = .5*cOfLift*density*velocityCorrected*velocityCorrected*area;
-
               document.getElementById("cOfLiftSentence").innerHTML = "The coefficient of lift for the aircraft is " + cOfLift + ".";
-              document.getElementById("densitySentence").innerHTML = "The density for the air around the aircraft is " + density + " kilograms per cubic meters.";
-              document.getElementById("velocitySentence").innerHTML = "The velocity for the aircraft is " + velocityCorrected.toFixed(2) + " meters per second.";
+              document.getElementById("densitySentence").innerHTML = "The density for the air around the aircraft is " + density.toFixed(3) + " kilograms per cubic meters.";
+              document.getElementById("velocitySentence").innerHTML = "The velocity for the aircraft is " + velocityCorrected.toFixed(3) + " meters per second.";
               document.getElementById("areaSentence").innerHTML = "The planform area for the aircraft is " + area + " square meters.";
-              document.getElementById("liftSentence").innerHTML = "The lift for the aircraft is " + lift.toFixed(2) + " Newtons.";
+              document.getElementById("liftSentence").innerHTML = "The lift for the aircraft is " + lift.toFixed(3) + " Newtons.";
           } else {document.getElementById("velocitySentence").innerHTML = "You must select both a length and time unit for the velocity.";}
-
-
-
         });
-
         </script>
       <div id="printOut">
         <p id="cOfLiftSentence"></p>
@@ -212,6 +208,5 @@
         <p id="liftSentence"></p>
       </div>
   </div>
-
 </body>
 </html>
