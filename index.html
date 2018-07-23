@@ -79,14 +79,6 @@
         background-repeat: no-repeat;
         background-size: cover;
       }
-      #myVideo{
-        position:fixed;
-        width:40.5vw;
-        top:10vw;
-        margin-left:58vw;
-        z-index: 1;
-
-      }
       #title{
         font-family: arial;
         position:fixed;
@@ -101,7 +93,7 @@
         font-family: arial;
         position:fixed;
         z-index: 2;
-        top:10vw;
+        top:8vw;
         width: 55vw;
         font-size: 5vw;
   	    background: #ebebe0;
@@ -115,8 +107,8 @@
       }
       #namesInput{
         margin-left: 1vw;
-        margin-top:.5vw;
-        margin-bottom:.5vw;
+        margin-top:0vw;
+        margin-bottom:0vw;
         font-size: 1.5vw;
         font-weight: bolder;
         line-height: 1;
@@ -124,8 +116,8 @@
       .inputBox{
         width:10vw;
         margin-left:1vw;
-        padding-top:.5vw;
-        padding-bottom:.25vw;
+        padding-top:0vw;
+        padding-bottom:0vw;
       }
       input::placeholder{
         color:red;
@@ -162,11 +154,7 @@
 <body>
   <h1 id="title">LIFT CALCULATOR<br></h1>
 
-   <video autoplay muted loop id="myVideo">
-    <source src="https://youtu.be/k4l3td50_48" type="video/mp4">
-  </video>
-
-  <div class = "mainBox">
+<div class = "mainBox">
       <p id="namesInput">COEFFICIENT OF LIFT </p>
         <input class="inputBox" id="cOfLift" type="number" step=".001" placeholder="Enter C of Lift">
       <p id="namesInput">DENSITY </p>
